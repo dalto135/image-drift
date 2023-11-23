@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+  <title>Image Drift</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='dog.png') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+  <h3>Image Drift</h3>
+
+  <div style="display: flex;">
+    <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-end;">
+      {%if images%}
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        {% for image in images %}
+          <img src="{{ image }}" style="width: 50%;">
+        {% endfor %}
+        <br/>
+      {%endif%}
+    </div>
+    
+    <div style="width: 50%; display: flex; flex-direction: column; align-items: flex-start;">
+      {%if prompts%}
+        {% for prompt in prompts %}
+          <textarea readonly style="width: 50%; aspect-ratio: 1 / 1; font-size: large;">{{prompt}}</textarea>
+        {% endfor %}
+        <br/>
+      {%endif%}
+    </div>
+  </div>
+
+  <form action="/" method="post">
+    {%if prompt%}
+      <input type="text" name="prompt" value="{{ prompt }}" style="overflow: scroll;" required />
+    {%else%}
+      <input type="text" name="prompt" placeholder="Enter an image prompt" required />
+    {%endif%}
+
+    {% if api_key %}
+      <input type="password" name="api-key" value="{{ api_key }}" placeholder="Enter your API Key"  />
+    {%else%}
+      <input type="password" name="api-key" placeholder="Enter your API Key"  />
+    {%endif%}
+
+    <br/>
+
+    <input type="submit" value="Generate" />
+    <!-- <br/> -->
+
+    <!-- <button id="download">Download Images and Prompts</button> -->
+  </form>
+  <!-- <script>
+    document.getElementById('download').addEventListener('click', function() {
+      console.log("hello world")
+    });
+  </script> -->
+</body>
