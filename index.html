@@ -1,21 +1,59 @@
 <!DOCTYPE html>
 <head>
-  <title>OpenAI Quickstart</title>
-  <link
-    rel="shortcut icon"
-    href="{{ url_for('static', filename='dog.png') }}"
-  />
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  <title>Image Drift</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
-  <h3>Name my pet</h3>
+  <h3>Image Drift</h3>
+
+  <div style="display: flex;">
+    <div id="imagesDiv" style="width: 50%; display: flex; flex-direction: column; align-items: flex-end;">
+      <!-- {%if images%}
+        <div style="width: 50%; aspect-ratio: 2 / 1;"></div>
+        {% for image in images %}
+          <img src="{{ image }}" style="width: 50%;">
+        {% endfor %}
+        <br/>
+      {%endif%} -->
+    </div>
+    
+    <div id="promptsDiv" style="width: 50%; display: flex; flex-direction: column; align-items: flex-start;">
+      <!-- {%if prompts%}
+        {% for prompt in prompts %}
+          <textarea readonly style="width: 50%; aspect-ratio: 1 / 1; font-size: large;">{{prompt}}</textarea>
+        {% endfor %}
+        <br/>
+      {%endif%} -->
+    </div>
+  </div>
+
   <form action="/" method="post">
-    <input type="text" name="animal" placeholder="Enter an animal" required />
-    <input type="submit" value="Generate names" />
+    <!-- {%if prompt%}
+      <input type="text" name="prompt" value="{{ prompt }}" style="overflow: scroll;" required />
+    {%else%}
+      <input type="text" name="prompt" placeholder="Enter an image prompt" required />
+    {%endif%} -->
+
+    <input type="text" name="prompt" id="promptInput" placeholder="Enter an image prompt" required />
+
+    <!-- {% if api_key %}
+      <input type="password" name="api-key" value="{{ api_key }}" placeholder="Enter your API Key"  />
+    {%else%}
+      <input type="password" name="api-key" placeholder="Enter your API Key"  />
+    {%endif%} -->
+
+    <input type="password" name="api-key" id="apiKeyInput" placeholder="Enter your API Key"  />
+
+    <br/>
+
+    <!-- <input type="submit" id="generate" value="Generate" /> -->
+    <!-- <br/> -->
+
+    <!-- <button id="download">Download Images and Prompts</button> -->
   </form>
-  {% if result %}
-  <div class="result">{{ result }}</div>
-  {% endif %}
+
+  <button id="generate">Generate</button>
+
+  <script src="script.js"></script>
 </body>
