@@ -1,59 +1,29 @@
 <!DOCTYPE html>
-<head>
-  <title>Image Drift</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Image Drift</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-<body>
-  <h3>Image Drift</h3>
+    <body>
+        <h1>Image Drift</h1>
 
-  <div style="display: flex;">
-    <div id="imagesDiv" style="width: 50%; display: flex; flex-direction: column; align-items: flex-end;">
-      <!-- {%if images%}
-        <div style="width: 50%; aspect-ratio: 2 / 1;"></div>
-        {% for image in images %}
-          <img src="{{ image }}" style="width: 50%;">
-        {% endfor %}
+        <div id="content">
+            <div id="imagesDiv"></div>
+            <div id="promptsDiv"></div>
+        </div>
+
+        <form action="/" method="post">
+            <input type="text" name="prompt" id="promptInput" placeholder="Enter an image prompt" required />
+            <input type="password" name="api-key" id="apiKeyInput" placeholder="Enter your API Key" required />
+        </form>
+
+        <button id="generate">Generate</button>
+
         <br/>
-      {%endif%} -->
-    </div>
-    
-    <div id="promptsDiv" style="width: 50%; display: flex; flex-direction: column; align-items: flex-start;">
-      <!-- {%if prompts%}
-        {% for prompt in prompts %}
-          <textarea readonly style="width: 50%; aspect-ratio: 1 / 1; font-size: large;">{{prompt}}</textarea>
-        {% endfor %}
-        <br/>
-      {%endif%} -->
-    </div>
-  </div>
 
-  <form action="/" method="post">
-    <!-- {%if prompt%}
-      <input type="text" name="prompt" value="{{ prompt }}" style="overflow: scroll;" required />
-    {%else%}
-      <input type="text" name="prompt" placeholder="Enter an image prompt" required />
-    {%endif%} -->
-
-    <input type="text" name="prompt" id="promptInput" placeholder="Enter an image prompt" required />
-
-    <!-- {% if api_key %}
-      <input type="password" name="api-key" value="{{ api_key }}" placeholder="Enter your API Key"  />
-    {%else%}
-      <input type="password" name="api-key" placeholder="Enter your API Key"  />
-    {%endif%} -->
-
-    <input type="password" name="api-key" id="apiKeyInput" placeholder="Enter your API Key"  />
-
-    <br/>
-
-    <!-- <input type="submit" id="generate" value="Generate" /> -->
-    <!-- <br/> -->
-
-    <!-- <button id="download">Download Images and Prompts</button> -->
-  </form>
-
-  <button id="generate">Generate</button>
-
-  <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
+</html>
