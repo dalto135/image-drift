@@ -124,11 +124,13 @@ h1 {
 }
 
 textarea {
-    background-color: rgba(255, 255, 255, 0.75);
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    background-color: var(--textColor);
     margin: 3px;
     padding: 3px;
-    width: 75%; 
-    aspect-ratio: 1 / 1; 
     font-size: large;
 }
 
@@ -137,7 +139,9 @@ textarea {
 }
 
 img {
-    width: 75%;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
     margin: 3px;
     padding: 0px;
     border-radius: 0px;
@@ -162,6 +166,14 @@ a:hover, button:hover {
 
 #light a:hover, #light button:hover {
     background-image: var(--linkGradient);
+}
+
+a:active, button:active {
+    background-image: None;
+}
+
+#light a:active, #light button:active {
+    background-image: None;
 }
 
 p, li, a, button, textarea, input {
@@ -193,6 +205,7 @@ form {
 
 #content {
     display: flex;
+    padding: 0px 6px 6px 6px;
 }
 
 #imagesDiv {

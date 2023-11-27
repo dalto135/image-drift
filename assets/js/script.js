@@ -10,6 +10,8 @@ function generate() {
         return
     }
 
+    document.documentElement.style.cursor = 'wait';
+
     console.log();
     console.log("GENERATING!");
 
@@ -80,7 +82,7 @@ function vision_call(image) {
                 },
             ],
             model: 'gpt-4-vision-preview',
-            max_tokens: 300
+            max_tokens: 250
         })
     })
     .then(response => response.json())
@@ -101,7 +103,7 @@ function displayContents(prompt) {
     let imagesDiv = document.querySelector("#imagesDiv");
     let promptsDiv = document.querySelector("#promptsDiv");
 
-    let imagesDivList = '<div style="width: 75%; aspect-ratio: 2 / 1;"></div>';
+    let imagesDivList = '<div style="width: 100%; max-width: 500px; box-sizing: border-box; aspect-ratio: 2 / 1;"></div>';
     images.forEach(image => {
         imagesDivList += `<img src=${image}></img>`;
     });
@@ -114,6 +116,7 @@ function displayContents(prompt) {
     imagesDiv.innerHTML = imagesDivList;
     promptsDiv.innerHTML = promptDivList;
     promptInputDiv.value = prompt;
+    document.documentElement.style.cursor = 'default';
 }
 
 let generateButton = document.querySelector('#generate');
