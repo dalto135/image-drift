@@ -44,7 +44,6 @@ function dall_e_call(prompt) {
     .then(data => {
         let image = data.data[0].url;
         images.push(image);
-        displayImages();
 
         console.log();
         console.log("IMAGE:");
@@ -89,9 +88,7 @@ function vision_call(image) {
         let prompt = data.choices[0].message.content;
         prompts.push(prompt);
 
-        displayPrompts();
-
-        promptInputDiv.value = prompt;
+        displayContents(prompt);
 
         console.log();
         console.log("PROMPT:");
@@ -100,26 +97,23 @@ function vision_call(image) {
     .catch(error => console.error(error));
 }
 
-function displayImages() {
+function displayContents(prompt) {
     let imagesDiv = document.querySelector("#imagesDiv");
+    let promptsDiv = document.querySelector("#promptsDiv");
 
     let imagesDivList = '<div style="width: 75%; aspect-ratio: 2 / 1;"></div>';
     images.forEach(image => {
         imagesDivList += `<img src=${image}></img>`;
     });
 
-    imagesDiv.innerHTML = imagesDivList;
-}
-
-function displayPrompts() {
-    let promptsDiv = document.querySelector("#promptsDiv");
-
     let promptDivList = "";
     prompts.forEach(prompt => {
         promptDivList += `<textarea readonly>${prompt}</textarea>`;
     });
-
+    
+    imagesDiv.innerHTML = imagesDivList;
     promptsDiv.innerHTML = promptDivList;
+    promptInputDiv.value = prompt;
 }
 
 let generateButton = document.querySelector('#generate');
