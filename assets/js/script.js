@@ -91,7 +91,7 @@ function vision_call(image) {
 
         displayPrompts();
 
-        promptInputDiv.value = prompts[prompts.length - 1];
+        promptInputDiv.value = prompt;
 
         console.log();
         console.log("PROMPT:");
