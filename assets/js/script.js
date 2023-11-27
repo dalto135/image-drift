@@ -16,6 +16,10 @@ function generate() {
     let prompt = promptInputDiv.value;
     if (prompts.length == 0) {
         prompts.push(prompt);
+
+        console.log();
+        console.log("PROMPT:");
+        console.log(prompt);
     }
 
     dall_e_call(prompt);
