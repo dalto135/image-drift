@@ -5,8 +5,13 @@ let promptInputDiv = document.querySelector("#promptInput");
 let apiKeyInputDiv = document.querySelector("#apiKeyInput");
 
 function generate() {
+    if (!promptInputDiv.value || !apiKeyInputDiv.value) {
+        alert("All fields must be completed.");
+        return
+    }
+
     console.log();
-    console.log("GENERATING!!");
+    console.log("GENERATING!");
 
     let prompt = promptInputDiv.value;
     if (prompts.length == 0) {
@@ -38,7 +43,7 @@ function dall_e_call(prompt) {
         displayImages();
 
         console.log();
-        console.log("IMAGE");
+        console.log("IMAGE:");
         console.log(image);
 
         vision_call(image);
@@ -85,7 +90,7 @@ function vision_call(image) {
         promptInputDiv.value = prompts[prompts.length - 1];
 
         console.log();
-        console.log("PROMPT");
+        console.log("PROMPT:");
         console.log(prompt);
     })
     .catch(error => console.error(error));
