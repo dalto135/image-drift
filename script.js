@@ -1,6 +1,3 @@
-const dall_e_url = 'https://api.openai.com/v1/images/generations';
-const vision_url = 'https://api.openai.com/v1/chat/completions';
-
 let prompts = [];
 let images = [];
 
@@ -20,7 +17,7 @@ function generate() {
 }
 
 function dall_e_call(prompt) {
-    fetch(dall_e_url, {
+    fetch('https://api.openai.com/v1/images/generations', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -50,7 +47,7 @@ function dall_e_call(prompt) {
 }
 
 function vision_call(image) {
-    fetch(vision_url, {
+    fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -97,11 +94,10 @@ function vision_call(image) {
 function displayImages() {
     let imagesDiv = document.querySelector("#imagesDiv");
 
-    let imagesDivList = '<div style="width: 50%; aspect-ratio: 2 / 1;"></div>';
+    let imagesDivList = '<div style="width: 75%; aspect-ratio: 2 / 1;"></div>';
     images.forEach(image => {
-        imagesDivList += '<img src=' + image + ' style="width: 50%;"></img>';
+        imagesDivList += `<img src=${image}></img>`;
     });
-    imagesDivList += '<br/>';
 
     imagesDiv.innerHTML = imagesDivList;
 }
@@ -111,12 +107,37 @@ function displayPrompts() {
 
     let promptDivList = "";
     prompts.forEach(prompt => {
-        promptDivList += `<textarea readonly style="width: 50%; aspect-ratio: 1 / 1; font-size: large;">${prompt}</textarea>`;
+        promptDivList += `<textarea readonly>${prompt}</textarea>`;
     });
-    promptDivList += '<br/>';
 
     promptsDiv.innerHTML = promptDivList;
 }
 
 let generateButton = document.querySelector('#generate');
 generateButton.addEventListener('click', generate);
+
+// Code for toggling Dark Mode
+let html_element = document.querySelector("html");
+
+function setTheme() {
+    let date = new Date();
+    let time = date.getHours();
+
+    if (time >= 8 && time < 21) {
+        html_element.setAttribute("id", "light");
+    }
+}
+
+setTheme();
+
+function toggleTheme() {
+    if (html_element.getAttribute("id") === "light") {
+        html_element.removeAttribute("id");
+    }
+    else {
+        html_element.setAttribute("id", "light");
+    }
+}
+
+let darkModeButton = document.querySelector("#darkMode");
+darkModeButton.addEventListener('click', toggleTheme);

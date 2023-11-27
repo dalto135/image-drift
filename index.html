@@ -8,21 +8,28 @@
     </head>
 
     <body>
-        <h1>Image Drift</h1>
+        <header>
+            <h1>Image Drift</h1>
+        </header>
 
-        <div id="content">
-            <div id="imagesDiv"></div>
-            <div id="promptsDiv"></div>
-        </div>
+        <section>
+            <div id="content">
+                <div id="imagesDiv"></div>
+                <div id="promptsDiv"></div>
+            </div>
+    
+            <form action="/" method="post">
+                <input type="text" name="prompt" id="promptInput" placeholder="Enter an image prompt" required />
+                <input type="password" name="api-key" id="apiKeyInput" placeholder="Enter your API Key" required />
+            </form>
+    
+            <button id="generate">Generate</button>
+        </section>
 
-        <form action="/" method="post">
-            <input type="text" name="prompt" id="promptInput" placeholder="Enter an image prompt" required />
-            <input type="password" name="api-key" id="apiKeyInput" placeholder="Enter your API Key" required />
-        </form>
-
-        <button id="generate">Generate</button>
-
-        <br/>
+        <footer>
+            <button id="darkMode">Toggle Dark Mode</button>
+            <a href="https://github.com/dalto135/image-drift" target="_blank">GitHub</a>
+        </footer>
 
         <script src="script.js"></script>
     </body>

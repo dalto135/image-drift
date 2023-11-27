@@ -1,15 +1,194 @@
-/* Basic CSS styling */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
+:root {
+    --blue: rgb(0, 0, 64);
+    --teal: rgb(0, 80, 80);
+    --mint: rgb(0, 192, 96);
+    --red: rgb(128, 0, 64);
+    --nonPastelGreen: rgb(144, 223, 160);    
+    --linkGradient: linear-gradient(rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    --defaultColor: black;
+    --visionCloudy: rgba(255, 255, 255, 0.5);
+    --transparent: rgba(0, 0, 0, 0);
+    --pastelGreen: rgba(144, 223, 160, 0.75);
+    --pastelBlue: rgba(128, 186, 255, 0.75);
+    --pastelRed: rgba(223, 144, 174, 0.75);
+    --pastelTeal: rgba(128, 206, 206, 0.75);
+
+    /* Dark Mode Colors */
+    --grey: rgb(32, 32, 40);
+    --cloudy: rgba(255, 255, 255, 0.5);
+    --textColor: rgba(255, 255, 255, 0.75);
+    --projectTitle: white;
+    --blueGradient: linear-gradient(rgb(128, 186, 255), rgba(0, 0, 0, 0));
+    --greenGradient: linear-gradient(rgb(144, 223, 160), rgba(0, 0, 0, 0));
+    --niceTeal: rgb(0, 96, 128);
+    --green: rgb(0, 128, 64);
+
+    /* Light Mode Colors */
+    --greyLightMode: rgb(241, 241, 247);
+    --cloudyLightMode:rgba(0, 0, 0, 0.125);
+    --cloudyBorderLightMode:rgba(0, 0, 0, 0.5);
+    --textColorLightMode: rgba(0, 0, 0, 0.75);
+    --projectTitleLightMode: black;
+    --blueGradientLightMode: linear-gradient(rgb(191, 220, 255), rgba(0, 0, 0, 0));
+    --greenGradientLightMode: linear-gradient(rgb(181, 250, 195), rgba(0, 0, 0, 0));
+    --niceTealLightMode: rgb(0, 174, 232);
+    --greenLightMode: rgb(0, 203, 101);
 }
 
-#app {
-    margin: 20px;
+* {
+    border: 1px solid black;
+    margin: 6px 3px;
+    padding: 0px 3px;
+    border-radius: 6px;
+    font-family: eurostile, Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: black;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+html {
+    display: flex;
+    justify-content: center;
+    background: var(--grey);
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#light {
+    background: var(--greyLightMode);
+}
+
+body {
+    width: 100%;
+    max-width: 1000px;
+    margin: 6px;
+    /* padding: 0px; */
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid rgb(0, 50, 91);
+}
+
+#light body {
+    border-color: rgb(1, 123, 176);
+}
+
+section {
+    border: 1px solid var(--niceTeal);
+    display: flex;
+    margin: 3px;
+    padding: 3px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#light section {
+    border-color: var(--niceTealLightMode);
+}
+
+header, footer {
+    border-color: var(--green);
+}
+
+#light header, #light footer {
+    border-color: var(--greenLightMode);
+}
+
+header {
+    margin: 6px 3px 3px 3px;
+}
+
+footer {
+    margin: 3px 3px 6px 3px;
+    display: flex;
+    justify-content: center;
+}
+
+div {
+    border: None;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    color: var(--textColor);
+    border: 0px;
+    padding: 3px;
+}
+
+#light h1 {
+    color: var(--textColorLightMode)
+}
+
+textarea {
+    background-color: rgba(255, 255, 255, 0.75);
+    margin: 3px;
+    padding: 3px;
+    width: 75%; 
+    aspect-ratio: 1 / 1; 
+    font-size: large;
+}
+
+#light textarea {
+    background: var(--cloudyLightMode);
+}
+
+img {
+    width: 75%;
+    margin: 3px;
+    padding: 0px;
+    border-radius: 0px;
+}
+
+a, button {
+    background-color: var(--cloudy);
+    padding: 3px;
+}
+
+#light a, #light button {
+    background: var(--cloudyLightMode);
+}
+
+a {
+    text-decoration-line: none;
+}
+
+a:hover, button:hover {
+    background-image: var(--linkGradient);
+}
+
+#light a:hover, #light button:hover {
+    background-image: var(--linkGradient);
+}
+
+p, li, a, button, textarea, input {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+}
+
+label {
+    color: var(--textColor);
+    border: 0px;
+    font-size: large;
+}
+
+#light label {
+    color: var(--textColorLightMode)
+}
+
+input {
+    font-size: x-large;
+}
+
+form {
+    border: 0px;
+}
+
+#generate {
+    margin: 3px;
 }
 
 #content {
@@ -28,4 +207,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+@media screen and (max-width: 297px) {
+    footer {
+        display: block;
+    }
+    
+    footer a {
+        display: inline-block;
+        margin: 0px 3px 6px 3px;
+    }
+}
+
+@media screen and (max-width: 200px) {
+    h1 {
+        font-size: 15vw;
+    }
 }
