@@ -125,17 +125,6 @@ generateButton.addEventListener('click', generate);
 // Code for toggling Dark Mode
 let html_element = document.querySelector("html");
 
-function setTheme() {
-    let date = new Date();
-    let time = date.getHours();
-
-    if (time >= 8 && time < 21) {
-        html_element.setAttribute("id", "light");
-    }
-}
-
-setTheme();
-
 function toggleTheme() {
     if (html_element.getAttribute("id") === "light") {
         html_element.removeAttribute("id");
@@ -144,6 +133,18 @@ function toggleTheme() {
         html_element.setAttribute("id", "light");
     }
 }
+
+function setTheme() {
+    let date = new Date();
+    let time = date.getHours();
+
+    if (time >= 8 && time < 21) {
+        toggleTheme();
+    }
+}
+
+setTheme();
+
 
 let darkModeButton = document.querySelector("#darkMode");
 darkModeButton.addEventListener('click', toggleTheme);
