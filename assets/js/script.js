@@ -11,6 +11,8 @@ function generate() {
     }
 
     document.documentElement.style.cursor = 'wait';
+    generateButton.disabled = true;
+    generateButton.style.color = 'grey';
 
     console.log();
     console.log("GENERATING!");
@@ -53,7 +55,13 @@ function dall_e_call(prompt) {
 
         vision_call(image);
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+        console.error(error);
+        document.documentElement.style.cursor = 'default';
+        generateButton.disabled = false;
+        generateButton.style.color = 'black';
+        alert(error + "\n\nMake sure your API Key is correct.");
+    });
 }
 
 function vision_call(image) {
@@ -96,7 +104,13 @@ function vision_call(image) {
         console.log("PROMPT:");
         console.log(prompt);
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+        console.error(error);
+        document.documentElement.style.cursor = 'default';
+        generateButton.disabled = false;
+        generateButton.style.color = 'black';
+        alert(error + "\n\nMake sure your API Key is correct.");
+    });
 }
 
 function displayContents(prompt) {
@@ -117,6 +131,8 @@ function displayContents(prompt) {
     promptsDiv.innerHTML = promptDivList;
     promptInputDiv.value = prompt;
     document.documentElement.style.cursor = 'default';
+    generateButton.disabled = false;
+    generateButton.style.color = 'black';
 }
 
 let generateButton = document.querySelector('#generate');
