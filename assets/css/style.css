@@ -176,16 +176,6 @@ a:active, button:active {
     background-image: None;
 }
 
-@media (hover: none) and (pointer: coarse) {
-    a:active, button:active {
-        background-image: var(--linkGradient);
-    }
-    
-    #light a:active, #light button:active {
-        background-image: var(--linkGradient);
-    }
-}
-
 p, li, a, button, textarea, input {
     font-family: 'Times New Roman', Times, serif;
     font-size: x-large;
