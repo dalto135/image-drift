@@ -4,6 +4,8 @@ let images = [];
 let promptInputDiv = document.querySelector("#promptInput");
 let apiKeyInputDiv = document.querySelector("#apiKeyInput");
 
+let collageDiv = document.querySelector("#collage");
+
 function generate() {
     if (!promptInputDiv.value || !apiKeyInputDiv.value) {
         alert("All fields must be completed.");
@@ -126,6 +128,10 @@ function displayContents(prompt) {
     prompts.forEach(prompt => {
         promptDivList += `<textarea readonly>${prompt}</textarea>`;
     });
+
+    if (images.length > 0) {
+        collageDiv.innerHTML = `<img src=${images[images.length - 1]} style="max-width: 350px; box-sizing: border-box; aspect-ratio: 1 / 1;"></img>`;
+    }
     
     imagesDiv.innerHTML = imagesDivList;
     promptsDiv.innerHTML = promptDivList;
@@ -137,6 +143,28 @@ function displayContents(prompt) {
 
 let generateButton = document.querySelector('#generate');
 generateButton.addEventListener('click', generate);
+
+function collage() {
+    let timeDelay = 300;
+
+    collageButton.disabled = true;
+    collageButton.style.color = 'grey';
+
+    for (let i = 0; i < images.length; i++) {
+        setTimeout(function() {
+            console.log(images[i]);
+            collageDiv.innerHTML = `<img src=${images[i]} style="max-width: 350px; box-sizing: border-box; aspect-ratio: 1 / 1;"></img>`
+        }, i * timeDelay);
+    }
+
+    setTimeout(function() {
+        collageButton.disabled = false;
+        collageButton.style.color = 'black';
+    }, (images.length - 1) * timeDelay);
+}
+
+let collageButton = document.querySelector("#collageButton");
+collageButton.addEventListener('click', collage);
 
 // Code for toggling Dark Mode
 let html_element = document.querySelector("html");
@@ -159,8 +187,7 @@ function setTheme() {
     }
 }
 
-setTheme();
-
+// setTheme();
 
 let darkModeButton = document.querySelector("#darkMode");
 darkModeButton.addEventListener('click', toggleTheme);
