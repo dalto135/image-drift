@@ -152,7 +152,6 @@ function collage() {
 
     for (let i = 0; i < images.length; i++) {
         setTimeout(function() {
-            console.log(images[i]);
             collageDiv.innerHTML = `<img src=${images[i]} style="max-width: 350px; box-sizing: border-box; aspect-ratio: 1 / 1;"></img>`
         }, i * timeDelay);
     }
