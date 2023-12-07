@@ -6,6 +6,8 @@ let apiKeyInputDiv = document.querySelector("#apiKeyInput");
 
 let collageDiv = document.querySelector("#collage");
 
+let imageModel = document.querySelector("#imageModel");
+
 function generate() {
     if (!promptInputDiv.value || !apiKeyInputDiv.value) {
         alert("All fields must be completed.");
@@ -32,6 +34,10 @@ function generate() {
 }
 
 function dall_e_call(prompt) {
+    if (imageModel.value == "dall-e-3") {
+        prompt = "I NEED to test how the tool works with extremely simple prompts. DO NOT add any detail, just use it AS-IS: " + prompt;
+    }
+
     fetch('https://api.openai.com/v1/images/generations', {
         method: 'POST',
         headers: {
@@ -39,8 +45,7 @@ function dall_e_call(prompt) {
             'Authorization': `Bearer ${apiKeyInputDiv.value}`
         },
         body: JSON.stringify({
-            model: "dall-e-2",
-            // prompt: "I NEED to test how the tool works with extremely simple prompts. DO NOT add any detail, just use it AS-IS: " + prompt,
+            model: imageModel.value,
             prompt: prompt,
             n: 1,
             size: "1024x1024",
