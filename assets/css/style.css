@@ -45,6 +45,7 @@
     color: black;
     text-align: center;
     overflow-wrap: break-word;
+    box-sizing: border-box;
 }
 
 html {
@@ -113,6 +114,12 @@ div {
     padding: 0px;
 }
 
+#collage {
+    display: flex;
+    justify-content: center;
+    margin: 6px 3px;
+}
+
 h1 {
     color: var(--textColor);
     border: 0px;
@@ -127,7 +134,6 @@ textarea {
     width: 100%;
     max-width: 500px;
     aspect-ratio: 1 / 1;
-    box-sizing: border-box;
     background-color: var(--textColor);
     margin: 3px;
     padding: 3px;
@@ -141,11 +147,26 @@ textarea {
 img {
     width: 100%;
     max-width: 500px;
-    box-sizing: border-box;
     margin: 3px;
     padding: 0px;
     border-radius: 0px;
 }
+
+/* #drop_zone {
+    border: 2px dashed #0087F7;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    padding: 50px;
+    text-align: center;
+    color: #0087F7;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+.over {
+    border-color: #333;
+    color: #333;
+} */
 
 a, button {
     background-color: var(--cloudy);
