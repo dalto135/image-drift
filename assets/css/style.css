@@ -233,14 +233,14 @@ form {
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 #promptsDiv {
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
 }
 
 @media screen and (max-width: 297px) {

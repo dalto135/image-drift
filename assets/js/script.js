@@ -124,7 +124,7 @@ function displayContents(prompt) {
     let imagesDiv = document.querySelector("#imagesDiv");
     let promptsDiv = document.querySelector("#promptsDiv");
 
-    let imagesDivList = '<div style="width: 100%; max-width: 500px; box-sizing: border-box; aspect-ratio: 2 / 1;"></div>';
+    let imagesDivList = '<div style="width: 100%; max-width: 500px; aspect-ratio: 2 / 1;"></div>';
     images.forEach(image => {
         imagesDivList += `<img src=${image}></img>`;
     });
@@ -135,7 +135,7 @@ function displayContents(prompt) {
     });
 
     if (images.length > 0) {
-        collageDiv.innerHTML = `<img src=${images[images.length - 1]} style="max-width: 350px; box-sizing: border-box; aspect-ratio: 1 / 1;"></img>`;
+        collageDiv.innerHTML = `<img src=${images[images.length - 1]} style="max-width: 350px; aspect-ratio: 1 / 1;"></img>`;
     }
     
     imagesDiv.innerHTML = imagesDivList;
@@ -157,7 +157,7 @@ function collage() {
 
     for (let i = 0; i < images.length; i++) {
         setTimeout(function() {
-            collageDiv.innerHTML = `<img src=${images[i]} style="max-width: 350px; box-sizing: border-box; aspect-ratio: 1 / 1;"></img>`
+            collageDiv.innerHTML = `<img src=${images[i]} style="max-width: 350px; aspect-ratio: 1 / 1;"></img>`
         }, i * timeDelay);
     }
 
@@ -169,6 +169,35 @@ function collage() {
 
 let collageButton = document.querySelector("#collageButton");
 collageButton.addEventListener('click', collage);
+
+// // This code allows the user to upload an image
+// var dropZone = document.getElementById('drop_zone');
+
+// // Add event listeners for drag and drop
+// dropZone.addEventListener('dragover', function(event) {
+//     event.stopPropagation();
+//     event.preventDefault();
+//     event.dataTransfer.dropEffect = 'copy';
+//     dropZone.classList.add('over');
+// });
+
+// dropZone.addEventListener('dragleave', function(event) {
+//     dropZone.classList.remove('over');
+// });
+
+// dropZone.addEventListener('drop', function(event) {
+//     event.stopPropagation();
+//     event.preventDefault();
+//     dropZone.classList.remove('over');
+
+//     var files = event.dataTransfer.files; // FileList object.
+
+//     // Process all File objects
+//     for (var i = 0, f; f = files[i]; i++) {
+//         // Handle files[i] upload here
+//         console.log('File name ' + f.name);
+//     }
+// });
 
 // Code for toggling Dark Mode
 let html_element = document.querySelector("html");
