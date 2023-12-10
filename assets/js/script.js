@@ -4,7 +4,7 @@ let images = [];
 let promptInputDiv = document.querySelector("#promptInput");
 let apiKeyInputDiv = document.querySelector("#apiKeyInput");
 
-let collageDiv = document.querySelector("#collage");
+let slideshowDiv = document.querySelector("#slideshow");
 
 let imageModel = document.querySelector("#imageModel");
 
@@ -66,7 +66,7 @@ function dall_e_call(prompt) {
         console.error(error);
         document.documentElement.style.cursor = 'default';
         generateButton.disabled = false;
-        generateButton.style.color = 'black';
+        generateButton.style.color = '';
         alert(error + "\n\nMake sure your API Key is correct.");
     });
 }
@@ -115,7 +115,7 @@ function vision_call(image) {
         console.error(error);
         document.documentElement.style.cursor = 'default';
         generateButton.disabled = false;
-        generateButton.style.color = 'black';
+        generateButton.style.color = '';
         alert(error + "\n\nMake sure your API Key is correct.");
     });
 }
@@ -135,7 +135,7 @@ function displayContents(prompt) {
     });
 
     if (images.length > 0) {
-        collageDiv.innerHTML = `<img src=${images[images.length - 1]} style="max-width: 350px; aspect-ratio: 1 / 1;"></img>`;
+        slideshowDiv.innerHTML = `<img src=${images[images.length - 1]} style="max-width: 350px; aspect-ratio: 1 / 1;"></img>`;
     }
     
     imagesDiv.innerHTML = imagesDivList;
@@ -143,32 +143,32 @@ function displayContents(prompt) {
     promptInputDiv.value = prompt;
     document.documentElement.style.cursor = 'default';
     generateButton.disabled = false;
-    generateButton.style.color = 'black';
+    generateButton.style.color = '';
 }
 
 let generateButton = document.querySelector('#generate');
 generateButton.addEventListener('click', generate);
 
-function collage() {
+function slideshow() {
     let timeDelay = 300;
 
-    collageButton.disabled = true;
-    collageButton.style.color = 'grey';
+    slideshowButton.disabled = true;
+    slideshowButton.style.color = 'grey';
 
     for (let i = 0; i < images.length; i++) {
         setTimeout(function() {
-            collageDiv.innerHTML = `<img src=${images[i]} style="max-width: 350px; aspect-ratio: 1 / 1;"></img>`
+            slideshowDiv.innerHTML = `<img src=${images[i]} style="max-width: 350px; aspect-ratio: 1 / 1;"></img>`
         }, i * timeDelay);
     }
 
     setTimeout(function() {
-        collageButton.disabled = false;
-        collageButton.style.color = 'black';
+        slideshowButton.disabled = false;
+        slideshowButton.style.color = '';
     }, (images.length - 1) * timeDelay);
 }
 
-let collageButton = document.querySelector("#collageButton");
-collageButton.addEventListener('click', collage);
+let slideshowButton = document.querySelector("#slideshowButton");
+slideshowButton.addEventListener('click', slideshow);
 
 // // This code allows the user to upload an image
 // var dropZone = document.getElementById('drop_zone');
