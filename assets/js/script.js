@@ -64,9 +64,7 @@ function dall_e_call(prompt) {
     })
     .catch(error => {
         console.error(error);
-        document.documentElement.style.cursor = 'default';
-        generateButton.disabled = false;
-        generateButton.style.color = '';
+        resetUI();
         alert(error + "\n\nMake sure your API Key is correct.");
     });
 }
@@ -96,7 +94,7 @@ function vision_call(image) {
                     ],
                 },
             ],
-            model: 'gpt-4-vision-preview',
+            model: 'gpt-4o',
             max_tokens: 250
         })
     })
@@ -113,9 +111,7 @@ function vision_call(image) {
     })
     .catch(error => {
         console.error(error);
-        document.documentElement.style.cursor = 'default';
-        generateButton.disabled = false;
-        generateButton.style.color = '';
+        resetUI();
         alert(error + "\n\nMake sure your API Key is correct.");
     });
 }
@@ -141,9 +137,7 @@ function displayContents(prompt) {
     imagesDiv.innerHTML = imagesDivList;
     promptsDiv.innerHTML = promptDivList;
     promptInputDiv.value = prompt;
-    document.documentElement.style.cursor = 'default';
-    generateButton.disabled = false;
-    generateButton.style.color = '';
+    resetUI();
 }
 
 let generateButton = document.querySelector('#generate');
@@ -198,6 +192,12 @@ slideshowButton.addEventListener('click', slideshow);
 //         console.log('File name ' + f.name);
 //     }
 // });
+
+function resetUI() {
+    document.documentElement.style.cursor = 'default';
+    generateButton.disabled = false;
+    generateButton.style.color = '';
+}
 
 // Code for toggling Dark Mode
 let html_element = document.querySelector("html");
